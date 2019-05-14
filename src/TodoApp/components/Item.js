@@ -2,9 +2,9 @@ import React from "react";
 
 class Item extends React.Component {
   render() {
-    const { title, itemDelete, editItem } = this.props;
+    const { title, itemDelete, editItem, doneHandle } = this.props;
     return (
-      <div>
+      <div onClick={doneHandle}>
         <br />
         <span className="badge btn-small white-text red" onClick={itemDelete}>
           x

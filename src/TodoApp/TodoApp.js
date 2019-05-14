@@ -9,7 +9,8 @@ export default class TodoApp extends Component {
     id: uuid(),
     items: [],
     editBtn: false,
-    err: ""
+    err: "",
+    done: false
   };
 
   handleChange = e => {
@@ -33,7 +34,8 @@ export default class TodoApp extends Component {
         item: "",
         id: uuid(),
         editBtn: false,
-        err: ""
+        err: "",
+        done: false
       });
     }
   };
@@ -55,7 +57,15 @@ export default class TodoApp extends Component {
       items: filteredItems,
       item: selectedItem.title,
       editBtn: true,
-      id: id
+      id: id,
+      err: "",
+      done: false
+    });
+  };
+
+  doneItem = () => {
+    this.setState({
+      done: !this.state.done
     });
   };
 
@@ -79,6 +89,8 @@ export default class TodoApp extends Component {
           items={this.state.items}
           itemDelete={this.deleteItem}
           editItem={this.editItem}
+          done={this.state.done}
+          doneHandle={this.doneItem}
         />
       </div>
     );

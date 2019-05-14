@@ -3,7 +3,7 @@ import Item from "./Item";
 
 class ItemsList extends React.Component {
   render() {
-    const { items, itemDelete, editItem } = this.props;
+    const { items, itemDelete, editItem, done, doneHandle } = this.props;
     return (
       <div>
         <br />
@@ -18,11 +18,24 @@ class ItemsList extends React.Component {
           )}
 
           {items.map(item => (
-            <li className="collection-item" key={item.id}>
+            <li
+              className="collection-item"
+              style={
+                done
+                  ? {
+                      color: "#ababab",
+                      cursor: "pointer",
+                      textDecoration: "line-through"
+                    }
+                  : { color: "#333", cursor: "pointer" }
+              }
+              key={item.id}
+            >
               <Item
                 title={item.title}
                 itemDelete={() => itemDelete(item.id)}
                 editItem={() => editItem(item.id)}
+                doneHandle={() => doneHandle(item.id)}
               />
               <br />
             </li>
